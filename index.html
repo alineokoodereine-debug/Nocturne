@@ -43,13 +43,13 @@
   <p class="sec-mini">Ambiance • Musique live • Privé • Ouvert Jeu-Dim 19:00-02:00</p>
 </section>
 
-<section class="split"><div class="split-img"><img src="aboutbar.jpg"></div><div class="split-text"><h2>L'ART DE<br>LA NUIT</h2><p>Derrière chaque cocktail il y a un barman qui ne sert pas, il crée. Photo du local ou du barman - tu choisis manuellement.</p></div></section>
+<section class="split"><div class="split-img"><img src="aboutbar.jpg"></div><div class="split-text"><h2>L'ART DE<br>LA NUIT</h2><p>Derrière chaque cocktail il y a un barman qui ne sert pas, il crée.</p></div></section>
 
 <section id="experiencia" class="split reverse"><div class="split-text"><h2>UNE EXPÉRIENCE<br>PAS JUSTE UN VERRE</h2><p>Lumière tamisée, mixologie d'auteur, son Afro House. Dress code: Chic Nocturne.</p><ul><li>Mixologie d'auteur</li><li>DJ Jeu-Ven-Sam</li><li>Zone VIP Privé</li></ul></div><div class="split-img"><img src="experiencia.jpg"></div></section>
 
 <section id="eventos" class="section-dark">
   <h2 class="sec-title"><span></span> ÉVÉNEMENTS À VENIR <span></span></h2>
-  <p class="sec-sub">Si le propriétaire écrit "Nuit Chill" dans le Sheet, apparaît en carte dorée automatique</p>
+  <p class="sec-sub">Le propriétaire ajoute ce qu'il veut dans le Sheet, ça apparaît automatique en carte dorée</p>
   <div id="eventos-grid" class="eventos-grid"></div>
 </section>
 
@@ -80,17 +80,30 @@
 <script>
 const SHEET_ID="1zAO5vKYaQuk9E6Q1o6zbtZGK6IQyVLsVLU5m3FzwN3w";
 function checkVIP(){document.getElementById('vip-box').style.display=document.getElementById('z').value.includes('VIP')?'block':'none'}
-fetch(`https://opensheet.elk.sh/${SHEET_ID}/1`).then(r=>r.json()).then(data=>{
+
+// CARTA - pestaña Carte
+fetch(`https://opensheet.elk.sh/${SHEET_ID}/Carte`).then(r=>r.json()).then(data=>{
   const list=document.getElementById('carta-list'); list.innerHTML='';
   data.forEach(s=>{ let n=s.Nom||'', p=s.Prix||'', d=s.Description||'', c=s.Categorie||''; if(n) list.innerHTML+=`<div class="carta-item"><div><b>${n}</b><br><small>${d} - ${c}</small></div><b class="gold">${p} FCFA</b></div>`; });
 });
+
+// EVENTOS - AHORA 100% LIBRE, lo que ponga el dueño sale
 fetch(`https://opensheet.elk.sh/${SHEET_ID}/eventos`).then(r=>r.json()).then(data=>{
-  const grid=document.getElementById('eventos-grid'); if(!data || !data.length) return;
+  const grid=document.getElementById('eventos-grid'); 
+  if(!data || !data.length){ grid.innerHTML='<p class="sec-sub">Aucun événement pour le moment</p>'; return; }
   grid.innerHTML=data.map(ev=>{
-    let fecha=ev.Fecha||'', hora=ev.Hora||'21:00', tit=ev.Titulo||'Nuit Chill', art=ev.Artista||'', des=ev.Descripcion||'', foto=ev.Foto_url||'event1.jpg';
-    return `<div class="evento-card"><div class="evento-fecha"><b>${fecha}</b><span>${hora}</span></div><img src="${foto}"><div class="evento-info"><h3>${tit.toUpperCase()}</h3><p>${art} • ${des}</p></div></div>`;
+    // Tolerante a Fecha/Date, Hora/Heure, Titulo/Titre, etc.
+    let fecha=ev.Fecha||ev.Date||ev.date||'',
+        hora=ev.Hora||ev.Heure||ev.heure||'21:00',
+        tit=ev.Titulo||ev.Titre||ev.titre||'Événement',
+        art=ev.Artista||ev.Artiste||'',
+        des=ev.Descripcion||ev.Description||ev.description||'',
+        foto=ev.Foto_url||ev.photo_url||ev.Photo_url||'gallery1.jpg';
+    if(!tit) return '';
+    return `<div class="evento-card"><div class="evento-fecha"><b>${fecha}</b><span>${hora}</span></div><img src="${foto}" onerror="this.src='gallery1.jpg'"><div class="evento-info"><h3>${tit.toUpperCase()}</h3><p>${art} ${art&&des?'•':''} ${des}</p></div></div>`;
   }).join('');
-}).catch(()=>{ document.getElementById('eventos-grid').innerHTML='<p class="sec-sub">Crée onglet 2 "eventos" avec: Fecha | Hora | Titulo | Artista | Descripcion | Foto_url</p>'; });
+}).catch(()=>{ document.getElementById('eventos-grid').innerHTML='<p class="sec-sub">Vérifie que la pestaña se llama "eventos" y el Sheet está publicado</p>'; });
+
 function orderBar(){
  let d=document.getElementById('d').value, t=document.getElementById('t').value, p=document.getElementById('p').value, z=document.getElementById('z').value;
  if(!d||!t) return alert('Choisis date et heure');
