@@ -1,78 +1,70 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="format-detection" content="telephone=no">
 <title>NOCTURNE | Bar Lounge Akanda</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="header">
-  <div class="logo">NOCTURNE <span></span></div>
+  <div class="logo">NOCTURNE</div>
   <nav class="nav">
-    <a href="#inicio">INICIO</a><a href="#cocteles">CÓCTELES</a><a href="#experiencia">EXPERIENCIA</a><a href="#eventos">EVENTOS</a><a href="#carta">CARTA</a><a href="#reservas">RESERVAS</a>
+    <a href="#inicio">ACCUEIL</a><a href="#cocteles">COCKTAILS</a><a href="#experiencia">EXPÉRIENCE</a><a href="#eventos">ÉVÉNEMENTS</a><a href="#carta">CARTE</a><a href="#reservas">CONTACT</a>
   </nav>
-  <button class="btn-reservar" onclick="document.getElementById('reservas').scrollIntoView({behavior:'smooth'})">🗓 RESERVAR</button>
+  <button class="btn-reservar" onclick="document.getElementById('reservas').scrollIntoView({behavior:'smooth'})">🗓 RÉSERVER</button>
 </header>
 
-<!-- HERO - pon tu foto como hero.jpg (la del bar elegante de la ref) -->
 <section class="hero" id="inicio">
   <img src="herobar.jpg" class="hero-bg">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>DONDE LA NOCHE<br>SE VUELVE ARTE</h1>
-    <p>Bar lounge contemporáneo • Cócteles de autor • Experiencias exclusivas</p>
+    <h1>OÙ LA NUIT<br>DEVIENT ART</h1>
+    <p>Bar lounge contemporain • Cocktails signature • Expériences exclusives</p>
     <div class="hero-btns">
-      <button class="btn-gold" onclick="document.getElementById('reservas').scrollIntoView({behavior:'smooth'})">Reservar Mesa</button>
-      <button class="btn-out" onclick="document.getElementById('carta').scrollIntoView({behavior:'smooth'})">Ver Carta</button>
+      <button class="btn-gold" onclick="document.getElementById('reservas').scrollIntoView({behavior:'smooth'})">Réserver une table</button>
+      <button class="btn-out" onclick="document.getElementById('carta').scrollIntoView({behavior:'smooth'})">Voir la carte</button>
     </div>
   </div>
 </section>
 
-<!-- CÓCTELES - como en la ref: 3 tarjetas con borde dorado -->
 <section id="cocteles" class="section-dark">
-  <h2 class="sec-title"><span></span> CÓCTELES DE AUTOR <span></span></h2>
-  <p class="sec-sub">Creaciones exclusivas inspiradas en la noche, mezcladas con precisión y arte.</p>
+  <h2 class="sec-title">COCKTAILS SIGNATURE</h2>
+  <p class="sec-sub">Créations exclusives inspirées par la nuit, mélangées avec précision et art.</p>
   <div class="coctel-grid">
-    <div class="coctel-card"><img src="drink1.jpg"><h3>OLD GOLD</h3><p>Whisky añejo, bitter de naranja, jarabe de vainilla y toque de oro comestible · $18</p></div>
-    <div class="coctel-card"><img src="drink2.jpg"><h3>TRUFA & MEZCAL</h3><p>Mezcal artesanal, trufa negra, limón yucateco, jarabe de agave · $20</p></div>
-    <div class="coctel-card"><img src="drink3.jpg"><h3>JAZMÍN NOCTURNO</h3><p>Gin botánico, licor de jazmín, lichi y espuma cítrica · $17</p></div>
-    <div class="coctel-card"><img src="drink4.jpg"><h3>PASSION BROWN</h3><p>Ron, maracuyá, canela ahumada · $19</p></div>
+    <div class="coctel-card"><img src="drink1.jpg"><h3>OLD GOLD</h3><p>Whisky vieilli, bitter orange, sirop vanille et touche d'or comestible · 18$</p></div>
+    <div class="coctel-card"><img src="drink2.jpg"><h3>TRUFFE & MEZCAL</h3><p>Mezcal artisanal, truffe noire, citron yucatan · 20$</p></div>
+    <div class="coctel-card"><img src="drink3.jpg"><h3>JASMIN NOCTURNE</h3><p>Gin botanique, liqueur jasmin, litchi · 17$</p></div>
+    <div class="coctel-card"><img src="drink4.jpg"><h3>PASSION BROWN</h3><p>Rhum, passion, cannelle fumée · 19$</p></div>
   </div>
-  <p class="sec-mini">Ambiente • Música en vivo • Privado • Abierto Jue-Dom 19:00-02:00</p>
+  <p class="sec-mini">Ambiance • Musique live • Privé • Ouvert Jeu-Dim 19:00-02:00</p>
 </section>
 
-<!-- ABOUT - tu foto manual -->
-<section class="split"><div class="split-img"><img src="aboutbar.jpg"></div><div class="split-text"><h2>EL ARTE DE<br>LA NOCHE</h2><p>Detrás de cada cóctel hay un barman que no sirve, crea. Fotos del local o del barman, tú decides.</p></div></section>
+<section class="split"><div class="split-img"><img src="about.jpg"></div><div class="split-text"><h2>L'ART DE<br>LA NUIT</h2><p>Derrière chaque cocktail, un barman qui ne sert pas, il crée. Photo du local ou du barman - tu choisis.</p></div></section>
+<section id="experiencia" class="split reverse"><div class="split-text"><h2>UNE EXPÉRIENCE<br>PAS JUSTE UN VERRE</h2><p>Lumière tamisée, mixologie d'auteur, son Afro House. Dress code: Chic Nocturne.</p></div><div class="split-img"><img src="experiencia.jpg"></div></section>
 
-<!-- EXPERIENCIA - con su portada -->
-<section id="experiencia" class="split reverse"><div class="split-text"><h2>UNA EXPERIENCIA<br>NO SOLO UN TRAGO</h2><p>Luz tenue, mixología de autor, sonido Afro House. Dress code: Chic Nocturne.</p><ul><li>Mixología de autor</li><li>DJ Jue-Ven-Sáb</li><li>Zona VIP Privé</li></ul></div><div class="split-img"><img src="experiencia.jpg"></div></section>
-
-<!-- EVENTOS - TARJETA DORADA CON FECHA Y HORA DESDE SHEET -->
 <section id="eventos" class="section-dark">
-  <h2 class="sec-title"><span></span> PRÓXIMOS EVENTOS <span></span></h2>
-  <p class="sec-sub">Si el dueño escribe "Noche Chill" en el Sheet, aparece aquí automático</p>
+  <h2 class="sec-title">ÉVÉNEMENTS À VENIR</h2>
+  <p class="sec-sub">Le propriétaire les modifie depuis Google Sheet: "Nuit Chill" → carte dorée automatique</p>
   <div id="eventos-grid" class="eventos-grid"></div>
 </section>
 
-<!-- GALERIA AMBIENTE -->
-<section class="section-dark"><h2 class="sec-title"><span></span> L'AMBIANCE <span></span></h2><div class="gallery-grid"><img src="gallery1.jpg"><img src="gallery2.jpg"><img src="gallery3.jpg"></div></section>
+<section class="section-dark"><h2 class="sec-title">L'AMBIANCE</h2><div class="gallery-grid"><img src="gallery1.jpg"><img src="gallery2.jpg"><img src="gallery3.jpg"></div></section>
+<section id="carta" class="section-dark"><h2 class="sec-title">LA CARTE COMPLÈTE</h2><div id="carta-list" class="carta-grid"></div></section>
 
-<!-- CARTA COMPLETA DESDE SHEET PESTAÑA 1 -->
-<section id="carta" class="section-dark"><h2 class="sec-title"><span></span> LA CARTA COMPLETA <span></span></h2><div id="carta-list" class="carta-grid"></div></section>
-
-<!-- RESERVAS + MAPA AKANDA + REDES -->
+<!-- RESERVAS CON FIX MÓVIL: LABEL + ICONO PARA QUE NO SE VEA VACÍO -->
 <section id="reservas" class="reservas">
-  <h2 class="sec-title"><span></span> RÉSERVEZ VOTRE TABLE <span></span></h2>
+  <h2 class="sec-title">RÉSERVEZ VOTRE TABLE</h2>
   <div class="res-form">
-    <input type="date" id="d"><input type="time" id="t">
-    <select id="p"><option>2 personnes</option><option>4 personnes</option><option>6+ VIP</option></select>
-    <select id="z" onchange="checkVIP()"><option>Bar</option><option>Lounge</option><option value="VIP Privé">VIP Privé (acompte 10k)</option></select>
+    <div class="field"><label>📅 Date de réservation</label><input type="date" id="d"></div>
+    <div class="field"><label>⏰ Heure d'arrivée</label><input type="time" id="t"></div>
+    <div class="field"><label>👥 Nombre de personnes</label><select id="p"><option>2 personnes</option><option>4 personnes</option><option>6+ VIP</option></select></div>
+    <div class="field"><label>📍 Zone préférée</label><select id="z" onchange="checkVIP()"><option>Bar</option><option>Lounge</option><option value="VIP Privé">VIP Privé (acompte 10k)</option></select></div>
     <div id="vip-box" class="acompte" style="display:none">VIP: 10.000F Airtel Money - Envoie capture 📸</div>
-    <button class="btn-gold" style="width:100%" onclick="orderBar()">CONFIRMER SUR WHATSAPP</button>
+    <button class="btn-gold" style="width:100%;margin-top:8px" onclick="orderBar()">CONFIRMER SUR WHATSAPP</button>
   </div>
   <div class="mapa"><iframe src="https://maps.google.com/maps?q=Akanda+Gabon&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="320" style="border:0"></iframe></div>
   <div class="socials">
@@ -87,22 +79,17 @@
 <script>
 const SHEET_ID="1zAO5vKYaQuk9E6Q1o6zbtZGK6IQyVLsVLU5m3FzwN3w";
 function checkVIP(){document.getElementById('vip-box').style.display=document.getElementById('z').value.includes('VIP')?'block':'none'}
-
-// CARTA - pestaña 1
 fetch(`https://opensheet.elk.sh/${SHEET_ID}/1`).then(r=>r.json()).then(data=>{
   const list=document.getElementById('carta-list'); list.innerHTML='';
   data.forEach(s=>{ let n=s.Nom||'', p=s.Prix||'', d=s.Description||'', c=s.Categorie||''; if(n) list.innerHTML+=`<div class="carta-item"><div><b>${n}</b><br><small>${d} - ${c}</small></div><b class="gold">${p} FCFA</b></div>`; });
 });
-
-// EVENTOS - pestaña 2 llamada "eventos" con columnas Fecha | Hora | Titulo | Artista | Descripcion | Foto_url
 fetch(`https://opensheet.elk.sh/${SHEET_ID}/eventos`).then(r=>r.json()).then(data=>{
   const grid=document.getElementById('eventos-grid'); if(!data.length) return;
   grid.innerHTML=data.map(ev=>{
-    let fecha=ev.Fecha||'', hora=ev.Hora||'21:00', tit=ev.Titulo||'Noche Chill', art=ev.Artista||'', des=ev.Descripcion||'', foto=ev.Foto_url||'event1.jpg';
+    let fecha=ev.Fecha||'', hora=ev.Hora||'21:00', tit=ev.Titulo||'Nuit Chill', art=ev.Artista||'', des=ev.Descripcion||'', foto=ev.Foto_url||'event1.jpg';
     return `<div class="evento-card"><div class="evento-fecha"><b>${fecha}</b><span>${hora}</span></div><img src="${foto}"><div class="evento-info"><h3>${tit.toUpperCase()}</h3><p>${art} • ${des}</p></div></div>`;
   }).join('');
-}).catch(()=>{ document.getElementById('eventos-grid').innerHTML='<p class="sec-sub">Crea pestaña 2 "eventos" con: Fecha | Hora | Titulo | Artista | Descripcion | Foto_url</p>'; });
-
+});
 function orderBar(){
  let d=document.getElementById('d').value, t=document.getElementById('t').value, p=document.getElementById('p').value, z=document.getElementById('z').value;
  if(!d||!t) return alert('Choisis date et heure');
