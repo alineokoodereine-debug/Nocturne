@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title>NOCTURNE | Bar Lounge Libreville</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">NOCTURNE</div>
+  <div class="nav"><a href="#inicio">INICIO</a><a href="#cocteles">CÓCTELES</a><a href="#carta">CARTA</a><a href="#reservas">RESERVAS</a></div>
+  <button class="btn-gold-outline" onclick="document.getElementById('reservas').scrollIntoView({behavior:'smooth'})">RESERVAR</button>
+</div>
+
+<section class="hero" id="inicio">
+  <div><h1>DONDE LA NOCHE<br>SE VUELVE ARTE</h1><p>Bar lounge contemporáneo • Cócteles de autor • Experiencias exclusivas</p>
+  <div><button class="btn-gold" onclick="document.getElementById('reservas').scrollIntoView({behavior:'smooth'})">Reservar Mesa</button><button class="btn-out" onclick="document.getElementById('carta').scrollIntoView({behavior:'smooth'})">Ver Carta</button></div></div>
+</section>
+
+<section id="cocteles">
+  <h2 class="sec-title">CÓCTELES DE AUTOR</h2><p class="sec-sub">Creaciones exclusivas inspiradas en la noche.</p>
+  <div class="coctel-grid" id="coctel-grid"></div>
+  <p style="text-align:center;color:#c9a86a66;font-size:12px;letter-spacing:1px;margin-top:20px">Ambiente • Música en vivo • Privado • Abierto Jue-Dom 19:00-02:00</p>
+</section>
+
+<section id="carta">
+  <h2 class="sec-title">LA CARTA</h2>
+  <div id="carta-list" class="carta-grid"></div>
+</section>
+
+<section class="reservas" id="reservas">
+  <h2 class="sec-title" style="margin-top:0">RÉSERVEZ VOTRE TABLE</h2>
+  <div class="res-form">
+    <input type="date" id="d"><input type="time" id="t">
+    <select id="p"><option>2 personnes</option><option>4 personnes</option><option>6+ VIP</option></select>
+    <select id="z" onchange="checkVIP()"><option value="Bar">Bar</option><option value="Lounge">Lounge</option><option value="VIP Privé">VIP Privé (acompte 10k)</option></select>
+    <div id="vip-box" class="acompte" style="display:none">VIP Privé: acompte 10.000F Airtel Money 07X. Envoie capture sur WhatsApp après 📸</div>
+    <button class="btn-gold" style="width:100%" onclick="orderBar()">CONFIRMER SUR WHATSAPP</button>
+  </div>
+  <div class="mapa"><iframe src="https://maps.google.com/maps?q=Libreville&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="320" style="border:0"></iframe></div>
+</section>
+
+<footer>NOCTURNE • Louis, Libreville • 18h-02h • @nocturne.lbv</footer>
+
+<script>
+const SHEET_ID = "1zAO5vKYaQuk9E6Q1o6zbtZGK6IQyVLsVLU5m3FzwN3w";
+function checkVIP(){ document.getElementById('vip-box').style.display = document.getElementById('z').value.includes('VIP') ? 'block' : 'none'; }
+fetch(`https://opensheet.elk.sh/${SHEET_ID}/1`).then(r=>r.json()).then(data=>{
+  const grid=document.getElementById('coctel-grid'); const list=document.getElementById('carta-list');
+  grid.innerHTML=''; list.innerHTML='';
+  data.forEach(s=>{
+    if(String(s.Disponible||'oui').toLowerCase()!=='non' && String(s.Disponible).toLowerCase()!=='no'){
+      let nom=s.Nom||s.nom||'', prix=s.Prix||s.prix||'', desc=s.Description||s.description||'', cat=s.Categorie||'', photo=s.Photo_url||'https://images.unsplash.com/photo-1470337458703-46ad1756a187';
+      if(String(s.Signature||'').toLowerCase()==='oui'){
+        grid.innerHTML+=`<div class="coctel-card"><img src="${photo}"><h3>${nom.toUpperCase()}</h3><p>${desc} · ${prix} FCFA</p></div>`;
+      }
+      list.innerHTML+=`<div class="carta-item"><div><b>${nom}</b><br><small style="color:#fff6">${desc} - <i>${cat}</i></small></div><b style="color:#c9a86a">${prix} FCFA</b></div>`;
+    }
+  });
+}).catch(e=>console.log("Publica el Sheet!"));
+function orderBar(){
+ let d=document.getElementById('d').value, t=document.getElementById('t').value, p=document.getElementById('p').value, z=document.getElementById('z').value;
+ if(!d||!t) return alert('Choisis date et heure');
+ let acompte = z.includes('VIP') ? '%0A⚠️ Acompte VIP 10k - j\'envoie capture 📸' : '';
+ let msg=`NOCTURNE - NOUVELLE RESA:%0A📅 ${d} ${t}%0A👥 ${p}%0A📍 Zone: ${z}${acompte}`;
+ window.open('https://wa.me/24162516457?text='+msg,'_blank');
+}
+</script>
+</body>
+</html>
